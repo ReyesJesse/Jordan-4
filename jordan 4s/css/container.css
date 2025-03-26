@@ -1,0 +1,231 @@
+.container {
+    position: relative; /* Set the container as a reference for positioning */
+    height: 100%; /* Full height of the body */
+    padding: 20px;
+    display: flex;
+    justify-content: right; /* Center the wrapper horizontally */
+    overflow: hidden;
+    z-index: 999;
+
+}
+
+/* Left arrow styling */
+.left-arrow {
+    content: "\f104"; /* Font Awesome left arrow */
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+
+}
+
+/* Right arrow styling */
+.right-arrow {
+    content: "\f105"; /* Font Awesome right arrow */
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+}
+
+/* Hover effects for arrows */
+.left-arrow:hover {
+    color: rgb(113, 110, 110); /* Change color on hover */
+    transform: translateY(-50%) translateX(-10px); /* Slide left */
+    cursor: pointer;
+
+}
+
+.right-arrow:hover {
+    color: rgb(113, 110, 110); /* Change color on hover */
+    transform: translateY(-50%) translateX(10px); /* Slide right */
+    cursor: pointer;
+
+}
+
+
+/* Wrapper styling */
+.wrapper {
+    width: 75%; /* Default width of 75% of the container */
+    position: relative;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Pseudo-elements */
+.wrapper::before, .wrapper::after {
+    padding: 0;
+    margin: 0;
+    display: block;
+    content: "";
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    top: -1px;
+    transition: width 0.5s ease-in-out; /* Add transition for width */
+}
+
+/* Before element */
+.wrapper::before {
+    width: 0;
+    right: 0;
+}
+
+/* After element */
+.wrapper::after {
+    width: 0%;
+    left: 0;
+}
+
+/* When content is active, adjust the width */
+.active .wrapper::before {
+    width: 10%; /* Example of expanding the width when active */
+
+}
+
+.active .wrapper::after {
+    width: 10%; /* Example of expanding the width when active */
+
+}
+
+
+
+/* Small text styling */
+.small-text {
+    font-size: 30px;
+    color: white; /* Adjust color as needed */
+   
+
+
+}
+
+/* Big text styling */
+.big-text {
+    font-size: 5rem;
+    color: white; /* Adjust color as needed */
+    font-weight: bold;
+    margin-top: 10px;
+    
+
+}
+
+
+
+/* Image wrapper styling */
+.image-wrapper {
+    position: absolute; /* Position the image absolutely within the container */
+    width: 50%; /* Adjust width as needed */
+    top: 50%; /* Adjust the vertical position relative to the container */
+    left: 60%; /* Center horizontally within the container */
+    transform: translate(-50%, -50%); /* Center the image properly */
+    pointer-events: none; /* Ensure clicks go through to the arrows */
+    transition: transform 0.5s ease-in-out;
+
+}
+
+/* Image styling */
+.image-wrapper img {
+    width: 100%; /* Make the image responsive */
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the area if necessary */
+    -webkit-filter: drop-shadow(2px 2px 2px #222);  
+    filter:         drop-shadow(2px 2px 2px #222); 
+    pointer-events: none; /* Ensure clicks go through to the arrows */
+    transition: transform 0.5s ease-in-out;
+
+}
+
+
+/* Slide in/out for the image */
+.image-wrapper img {
+    transform: translateX(-200%);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* When image becomes active */
+.active .image-wrapper img {
+    transform: translateX(0);
+}
+
+.text-wrapper{
+width: 50%;
+    overflow: hidden;
+}
+
+
+
+/* For tablets and small devices (768px and below) */
+@media (max-width: 768px) {
+    .wrapper {
+        width: 85%; /* Increase wrapper width to 85% for tablets */
+    }
+
+    .big-text {
+        font-size: 30px; /* Slightly smaller text on tablets */
+    }
+
+    .small-text {
+        font-size: 12px; /* Adjust small text size on tablets */
+    }
+
+    .image-wrapper {
+        width: 80%; /* Adjust image width for tablets */
+
+    }
+}
+
+/* For mobile screens (480px and below) */
+@media (max-width: 480px) {
+    .container {
+        justify-content: center; /* Center the wrapper on mobile */
+    }
+
+    .wrapper {
+        width: 100%; /* Increase wrapper width to 90% for mobile */
+        margin: 0 auto; /* Center the wrapper horizontally */
+        overflow: hidden;
+    }
+
+    .big-text {
+        font-size: 24px; /* Adjust big text size for mobile */
+    }
+
+    .small-text {
+        font-size: 15px; /* Adjust small text size for mobile */
+    }
+
+    .image-wrapper {
+        left: 50%; /* Center the image-wrapper horizontally */
+        transform: translate(-50%, -50%); /* Maintain centering */
+        width: 90%; /* Adjust image width for mobile */
+        margin-left: -2rem;
+    }
+
+    /* Adjust the left and right arrows for mobile */
+    .left-arrow, .right-arrow {
+        font-size: 1.5rem; /* Adjust size if needed */
+        top: 50%; /* Keep them vertically centered */
+        z-index: 10; /* Ensure they are above other elements */
+    }
+
+    .left-arrow {
+        left: 20px; /* Keep the left arrow slightly from the edge */
+    }
+
+    .right-arrow {
+        right: 20px; /* Keep the right arrow slightly from the edge */
+    }
+    /* When content is active, adjust the width */
+
+
+}
